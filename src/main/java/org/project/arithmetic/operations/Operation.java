@@ -3,7 +3,7 @@ package org.project.arithmetic.operations;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class SimpleOperations {
+public class Operation {
 
     private static final Integer MAX_NUMBERS =  20;
 
@@ -29,7 +29,7 @@ public class SimpleOperations {
                 .orElse(BigDecimal.ONE);
     }
 
-    public boolean isOperationValid(List<BigDecimal> numbersReceived) {
+    public static boolean isOperationValid(List<BigDecimal> numbersReceived) {
         return numbersReceived.size() < MAX_NUMBERS;
     }
 }
