@@ -1,6 +1,7 @@
 package org.project;
 
 import org.project.arithmetic.operations.Operation;
+import org.project.arithmetic.operations.OperationFunction;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

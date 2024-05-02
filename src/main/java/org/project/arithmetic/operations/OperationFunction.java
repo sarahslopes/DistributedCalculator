@@ -1,4 +1,4 @@
-package org.project;
+package org.project.arithmetic.operations;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
