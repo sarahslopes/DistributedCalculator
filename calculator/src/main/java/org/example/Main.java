@@ -1,14 +1,15 @@
-package org.project;
+package org.example;
 
-import org.project.arithmetic.operations.Operation;
-import org.project.arithmetic.operations.OperationFunction;
+import org.example.operation.Operation;
+import org.example.operation.OperationFunction;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static org.project.arithmetic.operations.Operation.isOperationValid;
-import static org.project.arithmetic.operations.BigDecimalUtils.*;
+import static org.example.operation.BigDecimalUtils.printResult;
+import static org.example.operation.BigDecimalUtils.stringToArrayList;
+import static org.example.operation.Operation.isOperationValid;
 
 public class Main {
     public static void main(String[] args) {
