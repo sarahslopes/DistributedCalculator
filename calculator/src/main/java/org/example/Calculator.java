@@ -5,27 +5,18 @@ import org.example.operation.OperationFunction;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import static org.example.operation.BigDecimalUtils.printResult;
 import static org.example.operation.BigDecimalUtils.stringToArrayList;
 import static org.example.operation.Operation.isOperationValid;
 
-public class Main {
-    public static void main(String[] args) {
-        selectorMenu();
-    }
+public class Calculator {
 
-    public static void selectorMenu() {
+    public void selectorMenu(int selectedOption) {
         Operation operation = new Operation();
-        Scanner scanner = new Scanner(System.in);
-        int option;
 
         do {
-            printMenu();
-            option = scanner.nextInt();
-
-            switch (option) {
+            switch (selectedOption) {
                 case 1:
                     performOperation(operation::sum, "Resultado da soma:");
                     break;
@@ -45,23 +36,10 @@ public class Main {
                     System.out.println("Insira uma opção válida!");
                     break;
             }
-        } while (option != 5);
-
-        scanner.close();
+        } while (selectedOption != 5);
     }
 
-    public static void printMenu() {
-        System.out.println("Selecione a operação desejada:");
-        System.out.println("1 - Soma");
-        System.out.println("2 - Subtração");
-        System.out.println("3 - Multiplicação");
-        System.out.println("4 - Divisão");
-        System.out.println("5 - Sair");
-        System.out.print("Digite o número correspondente à operação desejada: ");
-    }
-
-
-    public static void performOperation(OperationFunction operationFunction, String message) {
+    public void performOperation(OperationFunction operationFunction, String message) {
         ArrayList<BigDecimal> numbers = stringToArrayList();
 
         if (isOperationValid(numbers)) {
