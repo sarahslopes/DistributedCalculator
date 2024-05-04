@@ -1,15 +1,11 @@
-package org.example.operation;
+package org.project.calculator;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-import static org.example.operation.BigDecimalUtils.printResult;
-import static org.example.operation.BigDecimalUtils.stringToArrayList;
-
-public class Operation {
-
-    private static final Integer MAX_NUMBERS =  20;
+public class CalculatorOperations {
 
     public BigDecimal sum(List<BigDecimal> numbers) {
         return numbers.stream()
@@ -33,16 +29,16 @@ public class Operation {
                 .orElse(BigDecimal.ONE);
     }
 
-    public static boolean isOperationValid(List<BigDecimal> numbersReceived) {
-        return numbersReceived.size() < MAX_NUMBERS;
-    }
+    public static ArrayList<BigDecimal> parseInputToBigDecimalList(String receivedLine) {
+        Scanner scannerString = new Scanner(receivedLine);
+        ArrayList<BigDecimal> numbers = new ArrayList<>();
 
-    public static void performOperation(ArrayList<BigDecimal> numbers, OperationFunction operationFunction, String message) {
-        if (isOperationValid(numbers)) {
-            BigDecimal result = operationFunction.apply(numbers);
-            printResult(message, result);
-        } else {
-            System.out.println("Número máximo de números excedido. A operação não pode ser realizada.");
+        while (scannerString.hasNextBigDecimal()) {
+            BigDecimal number = scannerString.nextBigDecimal();
+            numbers.add(number);
         }
+
+        scannerString.close();
+        return numbers;
     }
 }

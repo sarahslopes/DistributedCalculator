@@ -1,4 +1,4 @@
-package org.example.client;
+package org.project.server;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -35,7 +35,7 @@ public class TCPClient {
             option = scanner.nextInt();
 
             System.out.println("\n" +
-                    "Insira os valores a serem operados:");
+                    "Enter the values to be operated:");
 
             String line = stringScanner.nextLine();
 
@@ -44,6 +44,9 @@ public class TCPClient {
 
             System.out.println("\n" +
                     "Establishing connection to the server...");
+
+            String result = dataIn.readUTF();
+            System.out.println(result);
         } while (option != 5);
 
 
@@ -54,12 +57,12 @@ public class TCPClient {
 
     public static void printMenu() {
         System.out.println(
-                "\nDigite o número correspondente à operação desejada:\n" +
-                        "1 - Soma\n" +
-                        "2 - Subtração\n" +
-                        "3 - Multiplicação\n" +
-                        "4 - Divisão\n" +
-                        "5 - Sair"
+                "\nEnter the number corresponding to the desired operation:\n" +
+                        "1 - Sum\n" +
+                        "2 - Subtract\n" +
+                        "3 - Multiplication\n" +
+                        "4 - Division\n" +
+                        "5 - Exit"
         );
     }
 }

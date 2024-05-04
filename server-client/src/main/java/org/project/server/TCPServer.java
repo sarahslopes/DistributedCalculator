@@ -1,6 +1,6 @@
-package org.example.server;
+package org.project.server;
 
-import org.example.Calculator;
+import org.project.calculator.CalculatorService;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -10,7 +10,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-import static org.example.operation.BigDecimalUtils.stringToArrayList;
+import static org.project.calculator.CalculatorOperations.parseInputToBigDecimalList;
 
 public class TCPServer {
 
@@ -38,7 +38,13 @@ public class TCPServer {
             String line = dataIn.readUTF();
 
             System.out.println("Start calculator service...");
-            calculatorAdapter(line, option);
+
+            ArrayList<BigDecimal> numbers = parseInputToBigDecimalList(line);
+
+            CalculatorService calculatorService = new CalculatorService();
+            String result = calculatorService.menu(option, numbers);
+
+            dataOut.writeUTF(result);
         } while (option != 5);
 
         dataOut.close();
@@ -46,11 +52,5 @@ public class TCPServer {
 
         clientSocket.close();
         serverSocket.close();
-    }
-
-    private static void calculatorAdapter(String inputLine, int option) {
-        ArrayList<BigDecimal> numbers = stringToArrayList(inputLine);
-        Calculator calculator = new Calculator();
-        calculator.menu(option, numbers);
     }
 }
