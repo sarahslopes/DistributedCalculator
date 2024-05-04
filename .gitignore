@@ -36,3 +36,9 @@ build/
 
 ### Mac OS ###
 .DS_Store
+/.idea/misc.xml
+/out/production/DistributedCalculator/project/OperationFunction.class
+/out/production/DistributedCalculator/project/TCPClient.class
+/out/production/DistributedCalculator/project/TCPServer.class
+/.idea/uiDesigner.xml
+/.idea/vcs.xml

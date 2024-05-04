@@ -1,4 +1,4 @@
-package org.project.server;
+package org.project;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
