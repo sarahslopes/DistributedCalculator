@@ -24,7 +24,6 @@ public class TCPServer {
 
         Socket clientSocket = serverSocket.accept();
         System.out.println("Client Connection Successful!");
-
         communication(serverSocket, clientSocket);
     }
 

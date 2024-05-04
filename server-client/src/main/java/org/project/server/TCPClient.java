@@ -17,7 +17,6 @@ public class TCPClient {
         Socket clientSocket = new Socket();
         clientSocket.connect(new InetSocketAddress("127.0.0.1", 1501), 1000);
         System.out.println("Connection Successful!");
-
         communication(clientSocket);
     }
 
@@ -28,7 +27,6 @@ public class TCPClient {
         Scanner scanner = new Scanner(System.in);
         Scanner stringScanner = new Scanner(System.in);
         int option;
-
 
         do {
             printMenu();
@@ -48,7 +46,6 @@ public class TCPClient {
             String result = dataIn.readUTF();
             System.out.println(result);
         } while (option != 5);
-
 
         dataIn.close();
         dataOut.close();
