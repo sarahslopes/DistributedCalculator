@@ -18,7 +18,6 @@ public class BigDecimalUtils {
             numbers.add(number);
         }
 
-       // scanner.close();
         scannerString.close();
         return numbers;
     }
