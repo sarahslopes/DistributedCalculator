@@ -6,10 +6,7 @@ import java.util.Scanner;
 
 public class BigDecimalUtils {
 
-    public static ArrayList<BigDecimal> stringToArrayList() {
-        Scanner scanner = new Scanner(System.in);
-        String receivedLine = scanner.nextLine();
-
+    public static ArrayList<BigDecimal> stringToArrayList(String receivedLine) {
         Scanner scannerString = new Scanner(receivedLine);
         ArrayList<BigDecimal> numbers = new ArrayList<>();
 

@@ -5,8 +5,12 @@ import org.example.Calculator;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+
+import static org.example.operation.BigDecimalUtils.stringToArrayList;
 
 public class TCPServer {
 
@@ -15,13 +19,11 @@ public class TCPServer {
     }
 
     public static void connection() throws IOException {
-        ServerSocket serverSocket = new ServerSocket(1500);
+        ServerSocket serverSocket = new ServerSocket(1501);
         System.out.println("Server started on port 1500...");
 
         Socket clientSocket = serverSocket.accept();
-        String clientIP = clientSocket.getInetAddress().toString();
-        int clientPort = clientSocket.getPort();
-        System.out.println("[IP: " + clientIP + " ,Port: " + clientPort + "]  " + "Client Connection Successful!");
+        System.out.println("Client Connection Successful!");
 
         communication(serverSocket, clientSocket);
     }
@@ -29,16 +31,26 @@ public class TCPServer {
     public static void communication(ServerSocket serverSocket, Socket clientSocket) throws IOException {
         DataInputStream dataIn = new DataInputStream(clientSocket.getInputStream());
         DataOutputStream dataOut = new DataOutputStream(clientSocket.getOutputStream());
+        int option;
 
-        int option = dataIn.readInt();
+        do {
+            option = dataIn.readInt();
+            String line = dataIn.readUTF();
 
-        System.out.println("Inicia serviço calculadora...");
-        Calculator calculator = new Calculator();
-        calculator.selectorMenu(option);
+            System.out.println("Start calculator service...");
+            calculatorAdapter(line, option);
+        } while (option != 5);
 
         dataOut.close();
         dataIn.close();
+
         clientSocket.close();
         serverSocket.close();
+    }
+
+    private static void calculatorAdapter(String inputLine, int option) {
+        ArrayList<BigDecimal> numbers = stringToArrayList(inputLine);
+        Calculator calculator = new Calculator();
+        calculator.menu(option, numbers);
     }
 }
