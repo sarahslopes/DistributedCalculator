@@ -18,6 +18,6 @@ public class CalculatorUtils {
         }
 
         BigDecimal result = operationFunction.apply(numbers);
-        return result + message;
+        return message + result;
     }
 }
