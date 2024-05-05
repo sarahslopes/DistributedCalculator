@@ -18,8 +18,8 @@ public class TCPServer {
     }
 
     public static void connection() throws IOException {
-        ServerSocket serverSocket = new ServerSocket(1501);
-        System.out.println("Server started on port 1500...");
+        ServerSocket serverSocket = new ServerSocket(15000);
+        System.out.println("Server started on port 15000...");
 
         Socket clientSocket = serverSocket.accept();
         System.out.println("Client Connection Successful!");
