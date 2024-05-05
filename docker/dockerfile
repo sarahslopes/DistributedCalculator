@@ -6,4 +6,4 @@ COPY ./calculator calculator/
 
 WORKDIR /build/calculator
 RUN javac src/main/java/org/project/TCPServer.java
-RUN java -cp src/main/java/  org.project.TCPServer
+CMD ["java", "-cp", "src/main/java/", "org.project.TCPServer"]
