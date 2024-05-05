@@ -1,0 +1,9 @@
+# syntax=docker/dockerfile:1
+FROM eclipse-temurin:21-jdk-jammy as deps
+
+WORKDIR /build
+COPY ./calculator calculator/
+
+WORKDIR /build/calculator
+RUN javac src/main/java/org/project/TCPServer.java
+RUN java -cp src/main/java/  org.project.TCPServer
