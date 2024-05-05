@@ -15,7 +15,7 @@ public class TCPClient {
 
     public static void connection() throws IOException {
         Socket clientSocket = new Socket();
-        clientSocket.connect(new InetSocketAddress("127.0.0.1", 1501), 1000);
+        clientSocket.connect(new InetSocketAddress("52.15.206.86", 15000), 1000);
         System.out.println("Connection Successful!");
         communication(clientSocket);
     }
