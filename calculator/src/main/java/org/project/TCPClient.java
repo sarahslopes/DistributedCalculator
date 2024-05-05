@@ -31,6 +31,9 @@ public class TCPClient {
         do {
             printMenu();
             option = scanner.nextInt();
+            if (option == 5) {
+                break;
+            }
 
             System.out.println("\n" +
                     "Enter the values to be operated:");
